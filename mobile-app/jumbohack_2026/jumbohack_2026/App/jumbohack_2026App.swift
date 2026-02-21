@@ -44,5 +44,6 @@ class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
                                 @escaping (UNNotificationPresentationOptions) -> Void) {
         
         completionHandler([.banner, .sound])
+        
     }
 }
