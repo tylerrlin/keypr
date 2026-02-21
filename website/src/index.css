@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: "KyivType Sans Medium";
+    src: url("/kyivtype/medium.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: "KyivType Sans Heavy";
+    src: url("/kyivtype/heavy.otf") format("opentype");
+    font-weight: 800;
+    font-style: normal;
+}
+
+@theme {
+    --color-k-bg: #313131;
+    --color-k-gold: #e5b300;
+    --color-k-silver: #ffffff;
+    --color-k-blue: #4f87a2;
+
+    --font-kyiv-medium: "KyivType Sans Medium", sans-serif;
+    --font-kyiv-heavy: "KyivType Sans Heavy", sans-serif;
+    --font-mono: "Kode Mono", monospace;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: "Kode Mono", sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: #313131;
+    color: #ffffff;
+    font-family: "Kode Mono", sans-serif;
+}
