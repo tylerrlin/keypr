@@ -33,18 +33,18 @@ struct ContentView: View {
                     AppColors.blackBackground
                         .ignoresSafeArea()
                     
-                    Button("Scan for Device") {
-                                    bleManager.startScan()
-                                }
-                                .font(.title2)
-                                .padding()
-                                
-                                if bleManager.isDeviceFound {
-                                    Image(systemName: "checkmark.circle.fill")
-                                        .resizable()
-                                        .frame(width: 80, height: 80)
-                                        .foregroundColor(.green)
-                                }
+//                    Button("Scan for Device") {
+//                                    bleManager.startScan()
+//                                }
+//                                .font(.title2)
+//                                .padding()
+//                                
+//                                if bleManager.isDeviceFound {
+//                                    Image(systemName: "checkmark.circle.fill")
+//                                        .resizable()
+//                                        .frame(width: 80, height: 80)
+//                                        .foregroundColor(.green)
+//                                }
                 }
                 .frame(height: geo.size.height * 0.85)
             }

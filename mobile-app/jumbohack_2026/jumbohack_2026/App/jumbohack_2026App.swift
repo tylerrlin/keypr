@@ -10,10 +10,14 @@ import UserNotifications
 
 @main
 struct jumnohack_2026App: App {
+    
+    let notificationDelegate = NotificationDelegate()
+       
     init() {
+        UNUserNotificationCenter.current().delegate = notificationDelegate
         requestNotificationPermission()
     }
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -30,4 +34,15 @@ struct jumnohack_2026App: App {
         }
     }
     
+}
+
+class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler:
+                                @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        completionHandler([.banner, .sound])
+    }
 }
