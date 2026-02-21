@@ -9,8 +9,9 @@
 import SwiftUI
 
 struct AppColors {
-    static let gold = Color(red: 212/255, green: 175/255, blue: 55/255)
+    static let goldMainText = Color(red: 229/255, green: 179/255, blue: 0/225)
     static let blackBackground = Color(red: 49/255, green: 49/255, blue: 49/255)
-    static let lightGrayText = Color.gray.opacity(0.7)
+    static let blueAccent = Color(red: 79/255, green: 134/255, blue: 162/255)
+    static let whiteSubtext = Color(red: 255/255, green: 255/255, blue: 255/255)
     // Add more colors here as needed
 }
