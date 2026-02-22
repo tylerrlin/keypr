@@ -7,10 +7,10 @@
 #define STATUS_LED_GPIO 2
 #define UP_BUTTON_GPIO  0
 
-static void on_ble_context_changed(bool connected) {
-    digitalWrite(STATUS_LED_GPIO, connected ? HIGH : LOW);
-    Serial.printf("[MAIN] BLE context: %s\n", connected ? "ARMED ✓" : "DISARMED ✗");
-}
+// static void on_ble_context_changed(bool connected) {
+//     digitalWrite(STATUS_LED_GPIO, connected ? HIGH : LOW);
+//     Serial.printf("[MAIN] BLE context: %s\n", connected ? "ARMED ✓" : "DISARMED ✗");
+// }
 
 void setup() {
     Serial.begin(115200);
@@ -37,13 +37,13 @@ void setup() {
     }
 
     // Init BLE proximity context
-    ble_context_set_callback(on_ble_context_changed);
+    // ble_context_set_callback(on_ble_context_changed);
     ble_context_init();
 
-    // Init USB HID - do this last
-    // On Arduino framework with native USB, USB starts automatically
-    // but we need TinyUSB configured before any HID traffic
-    usb_hid_init();
+    // // Init USB HID - do this last
+    // // On Arduino framework with native USB, USB starts automatically
+    // // but we need TinyUSB configured before any HID traffic
+    // usb_hid_init();
 
     Serial.println("");
     Serial.println("[MAIN] ════════════════════════════════");
@@ -56,6 +56,5 @@ void setup() {
 }
 
 void loop() {
-    usb_hid_task();
     delay(1);
 }
