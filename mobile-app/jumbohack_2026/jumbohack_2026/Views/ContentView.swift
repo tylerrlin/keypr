@@ -43,7 +43,7 @@ struct ContentView: View {
                         case .devices:
                             DevicesView(
                                 keyprs: ["keypr"],
-                                computers: ["John's MacBook"]
+                                computers: ["E's MacBook Pro"]
                             )
                         }
                     }
