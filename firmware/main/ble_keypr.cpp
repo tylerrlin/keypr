@@ -2,59 +2,51 @@
 #include "ble_context.h"
 #include <Arduino.h>
 #include <NimBLEDevice.h>
+#include <Preferences.h>
 #define EXIT_UNIMPLEMENTED 4
 
-const uint8_t vdmacaddr[6] = {0x8b, 0xef, 0xce, 0x02, 0x50, 0x3c};
 
-// // INIT process for device connecting for the first time
-// // Should perform some authentication procedure and establish future
-// authentication (i.e. set MAC address required) void ble_first_connect(void) {
-//     exit(EXIT_UNIMPLEMENTED);
-// }
+extern Preferences prefs;
 
-bool isSameMac(uint8_t *add) {
+void ble_connected_callback(uint8_t *macaddr)
+{
+    Serial.println("[BLE - DEBUG] Connection Callback");
+}
 
-  Serial.printf("%02X:%02X:%02X:%02X:%02X:%02X\n", add[5], add[4], add[3],
-                add[2], add[1], add[0]);
+void ble_disconnected_callback(void)
+{
+    Serial.println("[BLE - DEBUG] Disconnection Callback");
+}
 
-  for (int i = 0; i < 6; i++) {
-    if (vdmacaddr[i] != add[i]) {
-      return false;
+void ble_connection_callback(bool connected, uint8_t *macaddr)
+{
+    if (connected) {
+        ble_connected_callback(macaddr);
+    } else {
+        ble_disconnected_callback();
     }
-  }
-
-  return true;
 }
 
-void ble_connected_callback(uint8_t *macaddr) {
-  Serial.println("[BLE - DEBUG] Connection Callback");
-//  ! bonded happens AFTER this callback but this SHOULD be called before st we authenticate before pairing
-  bool auth = isSameMac(macaddr);
+bool auth_addr(uint8_t ty, uint8_t *vals)
+{
+    uint8_t real_ty;
+    prefs.getBytes("mac_type", &real_ty, sizeof(real_ty));
+    if (ty != real_ty) {
+        return false;
+    }
 
-  if (!auth) {
-    Serial.println("[BLE - DEBUG] WRONG MAC ADDR #notvdawg");
-    // NimBLEDevice::getServer()->disconnect(desc->conn_handle);
-  }
+    uint8_t real_vals[6];
+    prefs.getBytes("mac_val", real_vals,
+                   sizeof(real_vals) / sizeof(uint8_t));
 
-  // Upon connection,
-  //
-  //  authenticate mac address,
-  //
-  //  if differs disconnect device,
-  //
-  //  if authenticated, continue
+    for (int i = 0; i < 6; i++) {
+        Serial.printf("%2x <- val | real_val -> %2x\n", vals[i], real_vals[i]);
+    }
+    for (int i = 0; i < 6; i++) {
+        if (vals[i] != real_vals[i]) {
+            return false;
+        }
+    }
+
+    return true;
 }
-
-void ble_disconnected_callback(void) {
-  Serial.println("[BLE - DEBUG] Disconnection Callback");
-}
-
-void ble_connection_callback(bool connected, uint8_t *macaddr) {
-  if (connected) {
-    ble_connected_callback(macaddr);
-  } else {
-    ble_disconnected_callback();
-  }
-}
-
-bool ble_device_authenticated(void) { exit(EXIT_UNIMPLEMENTED); }

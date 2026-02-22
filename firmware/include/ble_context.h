@@ -1,7 +1,6 @@
 #pragma once
 #include <stdbool.h>
 #include <stdint.h> 
-#include "ble_keypr_structures.h"
 
 // Initialize BLE peripheral
 // Advertises as "KEYPR" with a known service UUID
@@ -16,7 +15,6 @@ bool ble_context_is_phone_connected(void);
 bool ble_context_is_phone_nearby(int8_t rssi_threshold_dbm);
 
 // Register a callback for connect/disconnect events
-// ! Type changed from: typedef void (*ble_context_callback_t)(bool connected);
 typedef void (*ble_context_callback_t)(bool connected, uint8_t *macaddr);
 void ble_context_set_callback(ble_context_callback_t cb);
 
