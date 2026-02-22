@@ -3,10 +3,12 @@
 
 #include "ble_context.h"
 #include "ble_keypr.h"
-#include <stdbool.h>
 #include <Arduino.h>
 #include <NimBLEDevice.h>
+#include <stdbool.h>
 
-extern void ble_send(const char* message);
+
+extern bool ble_send(char *message);
+extern bool ble_wait_for_response(char *buf, int timeout);
 
 #endif

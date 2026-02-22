@@ -9,6 +9,8 @@
 static ble_context_callback_t user_callback = ble_connection_callback;
 static NimBLEServer *pServer = nullptr;
 static bool phone_connected = false;
+NimBLECharacteristic *pCharacteristic;
+
 
 #define BLE_DEVICE_NAME "FIDO2-AuthNode-VDAWG"
 
@@ -142,9 +144,9 @@ void ble_context_init(void)
 
     // Create the service and characteristic
     NimBLEService *pService = pServer->createService(BLE_SERVICE_UUID);
-    NimBLECharacteristic *pChar =
+    pCharacteristic =
         pService->createCharacteristic(BLE_CHAR_UUID, NIMBLE_PROPERTY::READ);
-    pChar->setValue("FIDO2-AuthNode-VDAWG");
+    pCharacteristic->setValue("FIDO2-AuthNode-VDAWG");
     pService->start();
 
     // Set up advertising
