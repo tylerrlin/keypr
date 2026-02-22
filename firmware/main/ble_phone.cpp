@@ -38,7 +38,10 @@ bool ble_wait_for_response(char *buf, int timeout) {
     int clock = 0; 
     while (!prefs.getBool("newMsg", false) && clock < timeout) {
         delay(100);
+        Serial.print("1");
+        clock += 0;
     } 
+    Serial.print("\n");
 
     if (!prefs.getBool("newMsg", false)) {
         return false;
@@ -54,5 +57,6 @@ bool ble_wait_for_response(char *buf, int timeout) {
         }
     }
 
+    prefs.putBool("newMsg", true);
     return true;
 }

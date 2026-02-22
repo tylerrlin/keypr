@@ -427,8 +427,8 @@ uint8_t ctap2_get_assertion(const uint8_t *cbor, size_t len, uint8_t *out_buf,
     // ! FIND ME
 
     bool status;
-    char msg = 0x30;
-    status = ble_send(&msg);
+    char msg[2] = {0x30, '\0'};
+    status = ble_send(msg);
 
     if (!status) {
         return CTAP2_ERR_OPERATION_DENIED;
