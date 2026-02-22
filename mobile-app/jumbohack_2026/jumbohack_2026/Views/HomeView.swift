@@ -12,8 +12,7 @@ import SwiftUI
 struct HomeView: View {
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0){
-            
+        VStack(alignment: .leading, spacing: 0) {
             Text("current status")
                 .foregroundColor(AppColors.goldMainText)
                 .font(.custom("KodeMono-Regular", size: 24))
@@ -22,7 +21,7 @@ struct HomeView: View {
                 .frame(height: 2)
                 .overlay(AppColors.whiteSubtext)
                 .padding(.top, 2)
-            HStack(){
+            HStack() {
                 Text("keypr")
                     .foregroundColor(AppColors.whiteSubtext)
                     .font(.custom("KodeMono-Regular", size: 18))
@@ -31,7 +30,7 @@ struct HomeView: View {
                     .foregroundColor(.gray)
                     .font(.custom("KodeMono-Regular", size: 18))
             }.padding(.top, 25)
-            HStack(){
+            HStack() {
                 Text("authentication")
                     .foregroundColor(AppColors.whiteSubtext)
                     .font(.custom("KodeMono-Regular", size: 18))
@@ -41,11 +40,10 @@ struct HomeView: View {
                     .font(.custom("KodeMono-Regular", size: 18))
             }.padding(.top, 10)
             
+            Spacer()  // ← Spacer is now INSIDE the VStack, pushing empty space below
         }
-        .padding(.top, 40)
+        .padding(.top, 50)
         .padding(.horizontal, 25)
-        
-        Spacer()
     }
 }
 

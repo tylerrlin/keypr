@@ -45,7 +45,7 @@ struct DevicesView: View {
            Text("Devices")
                .font(.custom("KodeMono-Regular", size: 32))
                .foregroundColor(.white)
-               .padding(.top, 20)
+//               .padding(.top, 20)
                .bold()
                .frame(maxWidth: .infinity, alignment: .center)
            Text("hardware keys")
