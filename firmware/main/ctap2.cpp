@@ -5,6 +5,9 @@
 #include "ble_context.h"
 #include <string.h>
 #include <Arduino.h>      // replaces esp_log.h - use Serial.printf instead
+#include <Preferences.h>
+
+extern Preferences prefs;
 
 // ─── NOTE ON CBOR ─────────────────────────────────────────────────────────────
 // For a production build, use tinycbor or cn-cbor.
@@ -17,7 +20,7 @@ static const char *TAG = "CTAP2";
 // GPIO for user presence button (connect a button between GPIO0 and GND)
 #define UP_BUTTON_GPIO GPIO_NUM_0
 // LED for visual feedback (built-in LED on most devkit boards)
-#define STATUS_LED_GPIO GPIO_NUM_2
+#define STATUS_LED_GPIO 48
 
 // ─── Minimal CBOR helpers ─────────────────────────────────────────────────────
 
@@ -109,6 +112,10 @@ static const uint8_t *cbor_read_text(const uint8_t *buf, size_t *out_len, size_t
 
 // ─── User Presence ────────────────────────────────────────────────────────────
 bool ctap2_wait_for_user_presence(uint32_t timeout_ms) {
+
+    // TODO CHANGE THIS LINE BACK
+    //return ble_context_is_phone_connected();
+    return true;
     pinMode(UP_BUTTON_GPIO, INPUT_PULLUP);
     pinMode(STATUS_LED_GPIO, OUTPUT);
 
@@ -167,8 +174,6 @@ uint8_t ctap2_get_info(uint8_t *out_buf, size_t *out_len) {
 // ─── makeCredential ───────────────────────────────────────────────────────────
 uint8_t ctap2_make_credential(const uint8_t *cbor, size_t len,
                                uint8_t *out_buf, size_t *out_len) {
-    // Parse the incoming CBOR map
-    // Required params: 1=clientDataHash, 2=rp, 3=user, 4=pubKeyCredParams
     const uint8_t *client_data_hash = NULL;
     size_t cdh_len = 0;
     const uint8_t *rp_id = NULL;
@@ -194,7 +199,6 @@ uint8_t ctap2_make_credential(const uint8_t *cbor, size_t len,
                 break;
             }
             case 2: {  // rp { id: "...", name: "..." }
-                // Parse nested map for rp.id
                 if ((cbor[pos] & 0xE0) == 0xA0) {
                     uint8_t rp_map_len = cbor[pos] & 0x1F;
                     pos++;
@@ -244,11 +248,10 @@ uint8_t ctap2_make_credential(const uint8_t *cbor, size_t len,
     }
 
     if (!client_data_hash || !rp_id || cdh_len != 32) {
-        ESP_LOGE(TAG, "makeCredential: missing required params");
+        Serial.println("[CTAP2] makeCredential: missing required params");
         return CTAP2_ERR_MISSING_PARAMETER;
     }
 
-    // Wait for user presence (button press)
     if (!ctap2_wait_for_user_presence(10000)) {
         return CTAP2_ERR_ACTION_TIMEOUT;
     }
@@ -281,7 +284,7 @@ uint8_t ctap2_make_credential(const uint8_t *cbor, size_t len,
         auth_data, sizeof(auth_data)
     );
 
-    // Sign: clientDataHash || authenticatorData
+    // Sign: authenticatorData || clientDataHash
     uint8_t to_sign[512 + 32];
     memcpy(to_sign, auth_data, auth_data_len);
     memcpy(to_sign + auth_data_len, client_data_hash, 32);
@@ -292,26 +295,26 @@ uint8_t ctap2_make_credential(const uint8_t *cbor, size_t len,
         return CTAP2_ERR_OTHER;
     }
 
-    // Build CBOR response
-    // { 1: fmt, 2: authData, 3: attStmt }
+    // Build attestation object response - MUST use text keys per WebAuthn spec
     uint8_t *p = out_buf;
     *p++ = CTAP2_OK;
     *p++ = 0xA3;  // map(3)
 
-    // 1: fmt = "none"
-    p += cbor_write_uint(p, 1);
+    // "fmt": "none"
+    p += cbor_write_text(p, "fmt");
     p += cbor_write_text(p, "none");
 
-    // 2: authData
-    p += cbor_write_uint(p, 2);
-    p += cbor_write_bytes(p, auth_data, auth_data_len);
-
-    // 3: attStmt = {} (empty map for "none" attestation)
-    p += cbor_write_uint(p, 3);
+    // "attStmt": {} (empty map for "none" attestation)
+    p += cbor_write_text(p, "attStmt");
     *p++ = 0xA0;
 
+
+    // "authData": bytes
+    p += cbor_write_text(p, "authData");
+    p += cbor_write_bytes(p, auth_data, auth_data_len);
+
     *out_len = p - out_buf;
-    ESP_LOGI(TAG, "makeCredential success for RP: %.*s", (int)rp_id_len, rp_id);
+    Serial.printf("[CTAP2] makeCredential success for RP: %.*s\n", (int)rp_id_len, rp_id);
     return CTAP2_OK;
 }
 
@@ -320,13 +323,21 @@ uint8_t ctap2_get_assertion(const uint8_t *cbor, size_t len,
                              uint8_t *out_buf, size_t *out_len) {
 
     // ★ BLE CONTEXT CHECK ★ 
+    // TODO come back and uncomment for real thing
     // This is the key innovation: refuse to sign if phone isn't BLE-connected
-    if (!ble_context_is_phone_connected()) {
-        ESP_LOGW(TAG, "getAssertion BLOCKED: phone not in BLE range");
-        out_buf[0] = CTAP2_ERR_OPERATION_DENIED;
-        *out_len = 1;
+    // if (!ble_context_is_phone_connected()) {
+    //     Serial.printf(TAG, "getAssertion BLOCKED: phone not in BLE range");
+    //     out_buf[0] = CTAP2_ERR_OPERATION_DENIED;
+    //     *out_len = 1;
+    //     return CTAP2_ERR_OPERATION_DENIED;
+    // }
+    bool trusted = prefs.getBool("t_connected", false);
+    bool connected = prefs.getBool("has_trusted", false);
+    if (!connected || !trusted) {
         return CTAP2_ERR_OPERATION_DENIED;
     }
+
+    
 
     const uint8_t *client_data_hash = NULL;
     size_t cdh_len = 0;
@@ -409,7 +420,7 @@ uint8_t ctap2_get_assertion(const uint8_t *cbor, size_t len,
     }
 
     if (!found) {
-        ESP_LOGW(TAG, "No credential found for RP: %.*s", (int)rp_id_len, rp_id);
+        Serial.printf(TAG, "No credential found for RP: %.*s", (int)rp_id_len, rp_id);
         return CTAP2_ERR_NO_CREDENTIALS;
     }
 
@@ -449,10 +460,11 @@ uint8_t ctap2_get_assertion(const uint8_t *cbor, size_t len,
     // 1: credential { type: "public-key", id: bytes }
     p += cbor_write_uint(p, 1);
     *p++ = 0xA2;
-    p += cbor_write_text(p, "type");
-    p += cbor_write_text(p, "public-key");
+
     p += cbor_write_text(p, "id");
     p += cbor_write_bytes(p, cred.id, CREDENTIAL_ID_LEN);
+    p += cbor_write_text(p, "type");
+    p += cbor_write_text(p, "public-key");
 
     // 2: authData
     p += cbor_write_uint(p, 2);
@@ -471,7 +483,7 @@ uint8_t ctap2_get_assertion(const uint8_t *cbor, size_t len,
     p += cbor_write_text(p, cred.user_name);
 
     *out_len = p - out_buf;
-    ESP_LOGI(TAG, "getAssertion success, sign_count=%lu", (unsigned long)cred.sign_count);
+    Serial.printf("getAssertion success, sign_count=%lu", (unsigned long)cred.sign_count);
     return CTAP2_OK;
 }
 
@@ -485,7 +497,7 @@ uint8_t ctap2_process(const uint8_t *in_buf, size_t in_len,
     }
 
     uint8_t cmd = in_buf[0];
-    ESP_LOGI(TAG, "CTAP2 command: 0x%02x", cmd);
+    Serial.printf("CTAP2 command: 0x%02x", cmd);
 
     switch (cmd) {
         case CTAP2_CMD_GET_INFO:
@@ -504,7 +516,7 @@ uint8_t ctap2_process(const uint8_t *in_buf, size_t in_len,
             return CTAP2_OK;
 
         default:
-            ESP_LOGW(TAG, "Unknown command: 0x%02x", cmd);
+            Serial.printf("Unknown command: 0x%02x", cmd);
             out_buf[0] = CTAP2_ERR_INVALID_COMMAND;
             *out_len = 1;
             return CTAP2_ERR_INVALID_COMMAND;

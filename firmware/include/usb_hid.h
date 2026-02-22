@@ -3,6 +3,8 @@
 #include <stddef.h>
 #include "ctap2_types.h"
 
+void fido2_hid_early_init(void);
+
 // Initialize Adafruit TinyUSB HID stack
 void usb_hid_init(void);
 
