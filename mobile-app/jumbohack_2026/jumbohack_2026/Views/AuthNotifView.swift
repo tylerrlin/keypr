@@ -58,7 +58,7 @@ struct AuthNotifView: View {
                             // Decline
                             VStack(spacing: 10) {
                                 Button(action: onDecline) {
-                                    Image("icon_lockClosed")
+                                    Image("icon_lockClosed_grey")
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: geo.size.width * 0.18)
