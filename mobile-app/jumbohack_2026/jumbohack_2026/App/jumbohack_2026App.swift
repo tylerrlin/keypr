@@ -25,9 +25,9 @@ struct jumnohack_2026App: App {
 
     var body: some Scene {
         WindowGroup {
-//            ContentView()
+            ContentView()
 //            AuthTestingView()
-            BTTestView()
+//            BTTestView()
                 .environmentObject(AppState.shared)
         }
         
