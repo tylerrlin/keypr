@@ -8,9 +8,9 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Dmitry Rastvortsev - KyivType Sans Medium-.ttf</string>
-		<string>Dmitry Rastvortsev - KyivType Sans Heavy3.ttf</string>
+		<string>KyivType_Sans_Medium.otf</string>
 		<string>KodeMono-VariableFont_wght.ttf</string>
+		<string>KyivType_Sans_Heavy3.otf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

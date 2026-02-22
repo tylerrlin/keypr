@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UserNotifications
+import UIKit
 
 @main
 struct jumnohack_2026App: App {
@@ -16,6 +17,9 @@ struct jumnohack_2026App: App {
     init() {
         UNUserNotificationCenter.current().delegate = notificationDelegate
         requestNotificationPermission()
+        print("FONTSFONTSFONTS")
+        printFonts()
+        print("All fonts should have been printed by now")
     }
 
     var body: some Scene {
@@ -31,6 +35,13 @@ struct jumnohack_2026App: App {
             } else {
                 print("Notifications denied")
             }
+        }
+    }
+    
+    func printFonts() {
+        for family in UIFont.familyNames.sorted() {
+            let names = UIFont.fontNames(forFamilyName: family)
+            print("Family: \(family) Font names: \(names)")
         }
     }
     

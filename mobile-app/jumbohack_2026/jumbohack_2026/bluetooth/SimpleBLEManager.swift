@@ -17,6 +17,7 @@ import CoreBluetooth
 import Combine
 import UserNotifications
 
+
 class SimpleBLEManager: NSObject, ObservableObject, CBCentralManagerDelegate {
     
     @Published var isDeviceFound = false
