@@ -1,14 +1,23 @@
 //
-//  ContentView.swift
-//  jumnohack_2026
+//  BTTestView.swift
+//  jumbohack_2026
 //
-//  Created by John Cha on 2/21/26.
+//  Created by John Cha on 2/22/26.
 //
+
+
 
 import SwiftUI
 
-struct ContentView: View {
+struct BTTestView: View {
     @EnvironmentObject var appState: AppState
+    
+    @State private var isConnected: Bool = false
+    @StateObject private var bleManager = SimpleBLEManager()
+
+    // NEW: auth request simulation state
+    @StateObject private var authManager = AuthRequestManager()
+    @State private var lastDecision: String = "None"
     
     var body: some View {
         GeometryReader { geo in
@@ -19,7 +28,7 @@ struct ContentView: View {
                 VStack(spacing: 0) {
                     
                         
-                    Text("keypr")
+                    Text("TESTING VIEW")
                         .font(.custom("KodeMono-Regular", size: 36))
                         .fontWeight(.bold)
                         .foregroundColor(AppColors.goldMainText)
@@ -31,7 +40,10 @@ struct ContentView: View {
                         .padding(.top, 10)
                         .padding(.horizontal, 25)
                     
-                    Spacer()
+                    
+                    Button("Test Notification") {
+                        bleManager.triggerNotification()
+                    }
                     
                     
                 }
@@ -44,9 +56,9 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct BTTestView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        BTTestView()
             .previewDevice("iPhone 14 Pro")
             .preferredColorScheme(.dark)
     }

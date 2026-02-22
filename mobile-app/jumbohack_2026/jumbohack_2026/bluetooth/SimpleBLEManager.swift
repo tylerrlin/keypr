@@ -110,5 +110,6 @@ class SimpleBLEManager: NSObject, ObservableObject, CBCentralManagerDelegate {
         )
         
         UNUserNotificationCenter.current().add(request)
+        
     }
 }

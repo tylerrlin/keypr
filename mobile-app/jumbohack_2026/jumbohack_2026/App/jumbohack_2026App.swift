@@ -25,8 +25,10 @@ struct jumnohack_2026App: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
 //            AuthTestingView()
+            BTTestView()
+                .environmentObject(AppState.shared)
         }
         
     }
@@ -49,7 +51,9 @@ class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler:
                                 @escaping (UNNotificationPresentationOptions) -> Void) {
-        
+        DispatchQueue.main.async {
+                AppState.shared.showAuthView = true
+        }
         completionHandler([.banner, .sound])
         
     }

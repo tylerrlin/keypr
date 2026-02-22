@@ -27,6 +27,8 @@
 		7CA24D4C2F4AC94E00C1F4AB /* AuthTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D4B2F4AC94700C1F4AB /* AuthTestingView.swift */; };
 		7CA24D4E2F4B62AB00C1F4AB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24D4D2F4B62A300C1F4AB /* .gitignore */; };
 		7CA24D502F4B62CF00C1F4AB /* hardcoded_UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D4F2F4B62C200C1F4AB /* hardcoded_UUID.swift */; };
+		7CA24D522F4B67F500C1F4AB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D512F4B67F200C1F4AB /* AppState.swift */; };
+		7CA24D542F4B68C300C1F4AB /* BTTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D532F4B68B500C1F4AB /* BTTestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		7CA24D4B2F4AC94700C1F4AB /* AuthTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTestingView.swift; sourceTree = "<group>"; };
 		7CA24D4D2F4B62A300C1F4AB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7CA24D4F2F4B62C200C1F4AB /* hardcoded_UUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hardcoded_UUID.swift; sourceTree = "<group>"; };
+		7CA24D512F4B67F200C1F4AB /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		7CA24D532F4B68B500C1F4AB /* BTTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTTestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,7 @@
 		7CA24D062F4A8D6B00C1F4AB /* App */ = {
 			isa = PBXGroup;
 			children = (
+				7CA24D512F4B67F200C1F4AB /* AppState.swift */,
 				7CA24D042F4A8D6B00C1F4AB /* AppColors.swift */,
 				7CA24D052F4A8D6B00C1F4AB /* jumbohack_2026App.swift */,
 			);
@@ -92,6 +97,7 @@
 		7CA24D082F4A8D6B00C1F4AB /* bluetooth */ = {
 			isa = PBXGroup;
 			children = (
+				7CA24D532F4B68B500C1F4AB /* BTTestView.swift */,
 				7CA24D4F2F4B62C200C1F4AB /* hardcoded_UUID.swift */,
 				7CA24D4D2F4B62A300C1F4AB /* .gitignore */,
 				7CA24D072F4A8D6B00C1F4AB /* SimpleBLEManager.swift */,
@@ -223,8 +229,10 @@
 				7CA24D4A2F4A999000C1F4AB /* HomeView.swift in Sources */,
 				6C5FC0FC2F4A948D004D80A6 /* CustomTabBar.swift in Sources */,
 				7CA24D182F4A8D6B00C1F4AB /* SimpleBLEManager.swift in Sources */,
+				7CA24D542F4B68C300C1F4AB /* BTTestView.swift in Sources */,
 				6C5FC1042F4A9971004D80A6 /* AuthRequestManager.swift in Sources */,
 				7CA24D192F4A8D6B00C1F4AB /* AuthNotifView.swift in Sources */,
+				7CA24D522F4B67F500C1F4AB /* AppState.swift in Sources */,
 				6C5FC1002F4A94B9004D80A6 /* DevicesView.swift in Sources */,
 				7CA24D1A2F4A8D6B00C1F4AB /* ContentView.swift in Sources */,
 				6C5FC0FA2F4A946B004D80A6 /* AppTab.swift in Sources */,
