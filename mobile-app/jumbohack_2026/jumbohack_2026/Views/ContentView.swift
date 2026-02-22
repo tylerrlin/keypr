@@ -8,96 +8,36 @@
 import SwiftUI
 
 struct ContentView: View {
-    // Your existing BLE-related state
-    @State private var isConnected: Bool = false
-    @StateObject private var bleManager = SimpleBLEManager()
-
-    // NEW: auth request simulation state
-    @StateObject private var authManager = AuthRequestManager()
-    @State private var lastDecision: String = "None"
-
     var body: some View {
         GeometryReader { geo in
-            VStack(spacing: 0) {
-
-                // Top 15% gold section
-                ZStack {
-                    AppColors.goldMainText.ignoresSafeArea()
-
-                    VStack(spacing: 10) {
-                        Text("keypr")
-                            .font(.custom("KyivTypeSans-Heavy3", size: 48))
-                            .fontWeight(.bold)
-                            .foregroundColor(.black)
-
-                        Divider()
-                            .frame(height: 2)
-                            .overlay(AppColors.blueAccent)
-                            .padding(.horizontal, 23)
-                    }
+            ZStack {
+                AppColors.blackBackground
+                    .ignoresSafeArea()
+                
+                VStack(spacing: 0) {
+                    // Top 15% gold section
+                    
+                        
+                    Text("keypr")
+                        .font(.custom("KodeMono-Regular", size: 36))
+                        .fontWeight(.bold)
+                        .foregroundColor(AppColors.goldMainText)
+                        .padding(.top, 25)
+                    
+                    Rectangle()
+                        .fill(AppColors.blueAccent)
+                        .frame(height: 2)
+                        .padding(.top, 10)
+                        .padding(.horizontal, 25)
+                    
+                    Spacer()
+                    
+                    
                 }
-                .frame(height: geo.size.height * 0.15)
-
-                // Bottom 85% black section
-                ZStack(alignment: .topLeading) {
-                    AppColors.blackBackground.ignoresSafeArea()
-
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text(connectionMessage)
-                            .foregroundStyle(.white.opacity(0.85))
-                            .font(.system(size: 14, design: .monospaced))
-
-                        Button("Simulate Auth Request") {
-                            authManager.showRequest(appName: "keypr")
-                        }
-                        .buttonStyle(.borderedProminent)
-
-                        Text("Last decision: \(lastDecision)")
-                            .foregroundStyle(.white.opacity(0.85))
-                            .font(.system(size: 14, design: .monospaced))
-                    }
-                    .padding(20)
-                }
-                .frame(height: geo.size.height * 0.85)
+                
             }
+            .frame(height: .infinity)
         }
-        .ignoresSafeArea()
-
-        // ✅ Show AuthNotifView “on its own” when request appears
-        .fullScreenCover(item: $authManager.activeRequest) { request in
-            NavigationStack {
-                AuthNotifView(
-                    appName: request.appName,
-                    onAccept: {
-                        lastDecision = "Accepted"
-                        // simulate: dismiss after a beat so you can see the next page if you add it
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            authManager.clearRequest()
-                        }
-                    },
-                    onDecline: {
-                        lastDecision = "Declined"
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            authManager.clearRequest()
-                        }
-                    }
-                )
-            }
-        }
-
-        // ✅ Optional: auto simulation after 2 seconds
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                authManager.showRequest(appName: "keypr")
-            }
-        }
-    }
-
-    // Computed property for the descriptive message
-    private var connectionMessage: String {
-        isConnected
-        ? "Your phone is connected to the hardware device via BLE."
-        : "No hardware device detected. Please ensure your device is on and in range."
     }
 }
 

@@ -9,6 +9,10 @@
 
 import SwiftUI
 
+//TODO: stand-ins for
+let dummy_keypr_list = ["keypr-1", "BLE Passkey", "Test Device"]
+let dummy_mobile_devices_list = ["Jack's Computer"]
+
 struct DevicesView: View {
     var keyprs: [String]
     var computers: [String]
@@ -63,6 +67,7 @@ struct DevicesView: View {
                }
            }
            .padding(.top, 16)
+           .frame(height: 150)
             
             Text("mobile devices")
                 .font(.custom("KodeMono-Regular", size: 24))
@@ -82,7 +87,8 @@ struct DevicesView: View {
                 }
             }
             .padding(.top, 16)
-            Spacer()
+            .frame(height: 150)
+           Spacer()
        }
         .padding(.top, 16)
         .padding(.horizontal, 25)
@@ -91,8 +97,7 @@ struct DevicesView: View {
    }
 }
 
-let dummy_keypr_list = ["keypr-1", "BLE Passkey", "Test Device"]
-let dummy_mobile_devices_list = ["Jack's Computer"]
+
 struct DevicesViewPreview: PreviewProvider {
     static var previews: some View {
         DevicesView(keyprs: dummy_keypr_list,

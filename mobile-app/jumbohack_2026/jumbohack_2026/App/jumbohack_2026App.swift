@@ -12,6 +12,7 @@ import UIKit
 #endif
 
 
+//CHANGE THE WINDOW GROUP IN THE BODY TO TEST FEATURES
 @main
 struct jumnohack_2026App: App {
     
@@ -20,27 +21,14 @@ struct jumnohack_2026App: App {
     init() {
         UNUserNotificationCenter.current().delegate = notificationDelegate
         requestNotificationPermission()
-        print("FONTSFONTSFONTS")
-//        printFonts()
-        print("All fonts should have been printed by now")
     }
 
     var body: some Scene {
         WindowGroup {
             ContentView()
+//            AuthTestingView()
         }
         
-//        WindowGroup {
-//            AuthNotifView(
-//                appName: "keypr",
-//                onAccept: {
-//                    print("Accepted")
-//                },
-//                onDecline: {
-//                    print("Declined")
-//                }
-//            )
-//        }
     }
     
     func requestNotificationPermission() {
@@ -53,13 +41,6 @@ struct jumnohack_2026App: App {
         }
     }
     
-//    func printFonts() {
-//        for family in UIFont.familyNames.sorted() {
-//            let names = UIFont.fontNames(forFamilyName: family)
-//            print("Family: \(family) Font names: \(names)")
-//        }
-//    }
-//
 }
 
 class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
