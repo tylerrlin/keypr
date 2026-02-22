@@ -14,3 +14,5 @@ class AppState: ObservableObject {
     @Published var showAuthView = false
     @Published var showPairingView = false
 }
+
+

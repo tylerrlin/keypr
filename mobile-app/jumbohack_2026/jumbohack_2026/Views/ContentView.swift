@@ -16,6 +16,9 @@ struct ContentView: View {
     @State private var selectedTab: AppTab = .status
     @State private var showApproved: Bool = false
     @State private var showDeclined: Bool = false
+    
+    @State private var authViewID: UUID = UUID()
+
 
     var body: some View {
         GeometryReader { geo in
@@ -79,8 +82,16 @@ struct ContentView: View {
                                 },
                                 isPresent: appState.showAuthView
                             )
+                            .id(authViewID) 
                         }
                     }
+                    
+                    .onChange(of: appState.showAuthView) { newValue in
+                        if newValue {
+                            authViewID = UUID()
+                        }
+                    }
+                    
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .clipped()
 
