@@ -15,7 +15,6 @@ struct ContentView: View {
                     .ignoresSafeArea()
                 
                 VStack(spacing: 0) {
-                    // Top 15% gold section
                     
                         
                     Text("keypr")
