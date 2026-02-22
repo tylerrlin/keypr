@@ -16,8 +16,6 @@ struct ContentView: View {
                 
                 VStack(spacing: 0) {
                     // Top 15% gold section
-                    
-                        
                     Text("keypr")
                         .font(.custom("KodeMono-Regular", size: 36))
                         .fontWeight(.bold)
