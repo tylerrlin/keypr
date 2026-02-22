@@ -19,24 +19,18 @@ struct ContentView: View {
                 .ignoresSafeArea()
             VStack(spacing: 0) {
                 // Top 15% gold section
-                ZStack{
-                    AppColors.goldMainText
-                        .ignoresSafeArea()
-                    
-                    Text("keypr")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundColor(.black) // logo/text color in gold rectangle
-                }
-                .frame(height: geo.size.height * 0.15) // 15% of screen height
 
-                // Bottom 85% black section
-                ZStack(alignment: .topLeading) {
-                    AppColors.blackBackground
-                        .ignoresSafeArea()
                     
-                }
-                .frame(height: geo.size.height * 0.85)
+                Text("keypr")
+                    .font(.custom("KyivTypeSans-Heavy3", size: 48))
+                    .fontWeight(.bold)
+                    .foregroundColor(AppColors.goldMainText) // logo/text color in gold rectangle
+                
+                Divider()
+                    .frame(height: 2)
+                    .overlay(AppColors.blueAccent)// Inserts a horizontal line
+                    .padding(.horizontal, 23)
+                    .padding(.top, )
             }
         }
     }

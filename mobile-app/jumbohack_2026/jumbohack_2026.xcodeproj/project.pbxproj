@@ -7,28 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7CA24D122F4A8D6B00C1F4AB /* KodeMono-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24D092F4A8D6B00C1F4AB /* KodeMono-VariableFont_wght.ttf */; };
-		7CA24D132F4A8D6B00C1F4AB /* KyivType_Sans_Heavy3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24D0A2F4A8D6B00C1F4AB /* KyivType_Sans_Heavy3.otf */; };
-		7CA24D142F4A8D6B00C1F4AB /* KyivType_Sans_Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24D0B2F4A8D6B00C1F4AB /* KyivType_Sans_Medium.otf */; };
-		7CA24D152F4A8D6B00C1F4AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24D102F4A8D6B00C1F4AB /* Assets.xcassets */; };
-		7CA24D162F4A8D6B00C1F4AB /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D042F4A8D6B00C1F4AB /* AppColors.swift */; };
-		7CA24D172F4A8D6B00C1F4AB /* jumbohack_2026App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D052F4A8D6B00C1F4AB /* jumbohack_2026App.swift */; };
-		7CA24D182F4A8D6B00C1F4AB /* SimpleBLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D072F4A8D6B00C1F4AB /* SimpleBLEManager.swift */; };
-		7CA24D192F4A8D6B00C1F4AB /* AuthNotifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D0D2F4A8D6B00C1F4AB /* AuthNotifView.swift */; };
-		7CA24D1A2F4A8D6B00C1F4AB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D0E2F4A8D6B00C1F4AB /* ContentView.swift */; };
+		7CA24D402F4A8E2500C1F4AB /* KodeMono-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24D372F4A8E2500C1F4AB /* KodeMono-VariableFont_wght.ttf */; };
+		7CA24D412F4A8E2500C1F4AB /* KyivType_Sans_Heavy3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24D382F4A8E2500C1F4AB /* KyivType_Sans_Heavy3.otf */; };
+		7CA24D422F4A8E2500C1F4AB /* KyivType_Sans_Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24D392F4A8E2500C1F4AB /* KyivType_Sans_Medium.otf */; };
+		7CA24D432F4A8E2500C1F4AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24D3E2F4A8E2500C1F4AB /* Assets.xcassets */; };
+		7CA24D442F4A8E2500C1F4AB /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D322F4A8E2500C1F4AB /* AppColors.swift */; };
+		7CA24D452F4A8E2500C1F4AB /* jumbohack_2026App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D332F4A8E2500C1F4AB /* jumbohack_2026App.swift */; };
+		7CA24D462F4A8E2500C1F4AB /* SimpleBLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D352F4A8E2500C1F4AB /* SimpleBLEManager.swift */; };
+		7CA24D472F4A8E2500C1F4AB /* AuthNotifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D3B2F4A8E2500C1F4AB /* AuthNotifView.swift */; };
+		7CA24D482F4A8E2500C1F4AB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D3C2F4A8E2500C1F4AB /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7CA24C8D2F4A2E0400C1F4AB /* jumbohack_2026.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jumbohack_2026.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7CA24D042F4A8D6B00C1F4AB /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
-		7CA24D052F4A8D6B00C1F4AB /* jumbohack_2026App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jumbohack_2026App.swift; sourceTree = "<group>"; };
-		7CA24D072F4A8D6B00C1F4AB /* SimpleBLEManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleBLEManager.swift; sourceTree = "<group>"; };
-		7CA24D092F4A8D6B00C1F4AB /* KodeMono-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KodeMono-VariableFont_wght.ttf"; sourceTree = "<group>"; };
-		7CA24D0A2F4A8D6B00C1F4AB /* KyivType_Sans_Heavy3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KyivType_Sans_Heavy3.otf; sourceTree = "<group>"; };
-		7CA24D0B2F4A8D6B00C1F4AB /* KyivType_Sans_Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KyivType_Sans_Medium.otf; sourceTree = "<group>"; };
-		7CA24D0D2F4A8D6B00C1F4AB /* AuthNotifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNotifView.swift; sourceTree = "<group>"; };
-		7CA24D0E2F4A8D6B00C1F4AB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		7CA24D102F4A8D6B00C1F4AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7CA24D322F4A8E2500C1F4AB /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		7CA24D332F4A8E2500C1F4AB /* jumbohack_2026App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jumbohack_2026App.swift; sourceTree = "<group>"; };
+		7CA24D352F4A8E2500C1F4AB /* SimpleBLEManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleBLEManager.swift; sourceTree = "<group>"; };
+		7CA24D372F4A8E2500C1F4AB /* KodeMono-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KodeMono-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		7CA24D382F4A8E2500C1F4AB /* KyivType_Sans_Heavy3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KyivType_Sans_Heavy3.otf; sourceTree = "<group>"; };
+		7CA24D392F4A8E2500C1F4AB /* KyivType_Sans_Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KyivType_Sans_Medium.otf; sourceTree = "<group>"; };
+		7CA24D3B2F4A8E2500C1F4AB /* AuthNotifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNotifView.swift; sourceTree = "<group>"; };
+		7CA24D3C2F4A8E2500C1F4AB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7CA24D3E2F4A8E2500C1F4AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +45,7 @@
 		7CA24C842F4A2E0400C1F4AB = {
 			isa = PBXGroup;
 			children = (
-				7CA24D112F4A8D6B00C1F4AB /* jumbohack_2026 */,
+				7CA24D3F2F4A8E2500C1F4AB /* jumbohack_2026 */,
 				7CA24C8E2F4A2E0400C1F4AB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,50 +58,50 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7CA24D062F4A8D6B00C1F4AB /* App */ = {
+		7CA24D342F4A8E2500C1F4AB /* App */ = {
 			isa = PBXGroup;
 			children = (
-				7CA24D042F4A8D6B00C1F4AB /* AppColors.swift */,
-				7CA24D052F4A8D6B00C1F4AB /* jumbohack_2026App.swift */,
+				7CA24D322F4A8E2500C1F4AB /* AppColors.swift */,
+				7CA24D332F4A8E2500C1F4AB /* jumbohack_2026App.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
 		};
-		7CA24D082F4A8D6B00C1F4AB /* bluetooth */ = {
+		7CA24D362F4A8E2500C1F4AB /* bluetooth */ = {
 			isa = PBXGroup;
 			children = (
-				7CA24D072F4A8D6B00C1F4AB /* SimpleBLEManager.swift */,
+				7CA24D352F4A8E2500C1F4AB /* SimpleBLEManager.swift */,
 			);
 			path = bluetooth;
 			sourceTree = "<group>";
 		};
-		7CA24D0C2F4A8D6B00C1F4AB /* Fonts */ = {
+		7CA24D3A2F4A8E2500C1F4AB /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				7CA24D092F4A8D6B00C1F4AB /* KodeMono-VariableFont_wght.ttf */,
-				7CA24D0A2F4A8D6B00C1F4AB /* KyivType_Sans_Heavy3.otf */,
-				7CA24D0B2F4A8D6B00C1F4AB /* KyivType_Sans_Medium.otf */,
+				7CA24D372F4A8E2500C1F4AB /* KodeMono-VariableFont_wght.ttf */,
+				7CA24D382F4A8E2500C1F4AB /* KyivType_Sans_Heavy3.otf */,
+				7CA24D392F4A8E2500C1F4AB /* KyivType_Sans_Medium.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		7CA24D0F2F4A8D6B00C1F4AB /* Views */ = {
+		7CA24D3D2F4A8E2500C1F4AB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7CA24D0D2F4A8D6B00C1F4AB /* AuthNotifView.swift */,
-				7CA24D0E2F4A8D6B00C1F4AB /* ContentView.swift */,
+				7CA24D3B2F4A8E2500C1F4AB /* AuthNotifView.swift */,
+				7CA24D3C2F4A8E2500C1F4AB /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		7CA24D112F4A8D6B00C1F4AB /* jumbohack_2026 */ = {
+		7CA24D3F2F4A8E2500C1F4AB /* jumbohack_2026 */ = {
 			isa = PBXGroup;
 			children = (
-				7CA24D062F4A8D6B00C1F4AB /* App */,
-				7CA24D082F4A8D6B00C1F4AB /* bluetooth */,
-				7CA24D0C2F4A8D6B00C1F4AB /* Fonts */,
-				7CA24D0F2F4A8D6B00C1F4AB /* Views */,
-				7CA24D102F4A8D6B00C1F4AB /* Assets.xcassets */,
+				7CA24D342F4A8E2500C1F4AB /* App */,
+				7CA24D362F4A8E2500C1F4AB /* bluetooth */,
+				7CA24D3A2F4A8E2500C1F4AB /* Fonts */,
+				7CA24D3D2F4A8E2500C1F4AB /* Views */,
+				7CA24D3E2F4A8E2500C1F4AB /* Assets.xcassets */,
 			);
 			path = jumbohack_2026;
 			sourceTree = "<group>";
@@ -167,10 +167,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CA24D122F4A8D6B00C1F4AB /* KodeMono-VariableFont_wght.ttf in Resources */,
-				7CA24D132F4A8D6B00C1F4AB /* KyivType_Sans_Heavy3.otf in Resources */,
-				7CA24D142F4A8D6B00C1F4AB /* KyivType_Sans_Medium.otf in Resources */,
-				7CA24D152F4A8D6B00C1F4AB /* Assets.xcassets in Resources */,
+				7CA24D402F4A8E2500C1F4AB /* KodeMono-VariableFont_wght.ttf in Resources */,
+				7CA24D412F4A8E2500C1F4AB /* KyivType_Sans_Heavy3.otf in Resources */,
+				7CA24D422F4A8E2500C1F4AB /* KyivType_Sans_Medium.otf in Resources */,
+				7CA24D432F4A8E2500C1F4AB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,11 +181,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CA24D162F4A8D6B00C1F4AB /* AppColors.swift in Sources */,
-				7CA24D172F4A8D6B00C1F4AB /* jumbohack_2026App.swift in Sources */,
-				7CA24D182F4A8D6B00C1F4AB /* SimpleBLEManager.swift in Sources */,
-				7CA24D192F4A8D6B00C1F4AB /* AuthNotifView.swift in Sources */,
-				7CA24D1A2F4A8D6B00C1F4AB /* ContentView.swift in Sources */,
+				7CA24D442F4A8E2500C1F4AB /* AppColors.swift in Sources */,
+				7CA24D452F4A8E2500C1F4AB /* jumbohack_2026App.swift in Sources */,
+				7CA24D462F4A8E2500C1F4AB /* SimpleBLEManager.swift in Sources */,
+				7CA24D472F4A8E2500C1F4AB /* AuthNotifView.swift in Sources */,
+				7CA24D482F4A8E2500C1F4AB /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
