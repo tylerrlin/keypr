@@ -39,8 +39,8 @@ class SimpleBLEManager: NSObject, ObservableObject, CBCentralManagerDelegate {
           )
       }
     
-    // Replace with your device's advertised Service UUID
-    private let targetServiceUUID = CBUUID(string: "b1eb0868-cf7c-44a5-a917-33a90e31fda9")
+    // targetService UUID is the hardcoded UUID in a git-ignored file
+    private let targetServiceUUID = CBUUID(string: hardcoded_UUID)
     
 
     
@@ -99,8 +99,8 @@ class SimpleBLEManager: NSObject, ObservableObject, CBCentralManagerDelegate {
 //    For when Jack's UUID is found
     func triggerNotification() {
         let content = UNMutableNotificationContent()
-        content.title = "Passkey Device Found"
-        content.body = "Your BLE device is nearby."
+        content.title = "Are you trying to log in?"
+        content.body = "Tap here to confirm or deny"
         content.sound = .default
         
         let request = UNNotificationRequest(

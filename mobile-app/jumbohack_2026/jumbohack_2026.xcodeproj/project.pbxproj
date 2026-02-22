@@ -23,6 +23,8 @@
 		7CA24D1A2F4A8D6B00C1F4AB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D0E2F4A8D6B00C1F4AB /* ContentView.swift */; };
 		7CA24D4A2F4A999000C1F4AB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D492F4A998E00C1F4AB /* HomeView.swift */; };
 		7CA24D4C2F4AC94E00C1F4AB /* AuthTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D4B2F4AC94700C1F4AB /* AuthTestingView.swift */; };
+		7CA24D4E2F4B62AB00C1F4AB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24D4D2F4B62A300C1F4AB /* .gitignore */; };
+		7CA24D502F4B62CF00C1F4AB /* hardcoded_UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D4F2F4B62C200C1F4AB /* hardcoded_UUID.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		7CA24D102F4A8D6B00C1F4AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CA24D492F4A998E00C1F4AB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		7CA24D4B2F4AC94700C1F4AB /* AuthTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTestingView.swift; sourceTree = "<group>"; };
+		7CA24D4D2F4B62A300C1F4AB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		7CA24D4F2F4B62C200C1F4AB /* hardcoded_UUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hardcoded_UUID.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,8 @@
 		7CA24D082F4A8D6B00C1F4AB /* bluetooth */ = {
 			isa = PBXGroup;
 			children = (
+				7CA24D4F2F4B62C200C1F4AB /* hardcoded_UUID.swift */,
+				7CA24D4D2F4B62A300C1F4AB /* .gitignore */,
 				7CA24D072F4A8D6B00C1F4AB /* SimpleBLEManager.swift */,
 			);
 			path = bluetooth;
@@ -187,6 +193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA24D4E2F4B62AB00C1F4AB /* .gitignore in Resources */,
 				7CA24D122F4A8D6B00C1F4AB /* KodeMono-VariableFont_wght.ttf in Resources */,
 				7CA24D132F4A8D6B00C1F4AB /* KyivType_Sans_Heavy3.otf in Resources */,
 				7CA24D142F4A8D6B00C1F4AB /* KyivType_Sans_Medium.otf in Resources */,
@@ -201,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA24D502F4B62CF00C1F4AB /* hardcoded_UUID.swift in Sources */,
 				7CA24D162F4A8D6B00C1F4AB /* AppColors.swift in Sources */,
 				6C5FC0FE2F4A94AA004D80A6 /* HistoryView.swift in Sources */,
 				7CA24D172F4A8D6B00C1F4AB /* jumbohack_2026App.swift in Sources */,
