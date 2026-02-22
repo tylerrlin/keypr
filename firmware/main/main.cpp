@@ -15,10 +15,7 @@ static void on_ble_context_changed(bool connected) {
 
 void setup() {
     fido2_hid_early_init();  // USB starts here - must be first
-
     Serial.begin(115200);
-    // DO NOT wait for Serial in OTG mode - it will block forever
-    // while (!Serial) <- DELETE THIS
     delay(500);
 
     Serial.println("[MAIN] booting...");
@@ -36,7 +33,6 @@ void setup() {
 }
 
 void loop() {
-    //Serial.println("hello world!");
     usb_hid_task();
     delay(1);
 }

@@ -6,7 +6,7 @@ static bool phone_connected = false;
 static ble_context_callback_t user_callback = NULL;
 static NimBLEServer *pServer = nullptr;
 
-#define BLE_DEVICE_NAME "FIDO2-AuthNode"
+#define BLE_DEVICE_NAME "FIDO2-AuthNodeJack"
 
 class ConnectionCallbacks : public NimBLEServerCallbacks {
     void onConnect(NimBLEServer *pServer, ble_gap_conn_desc *desc) override {

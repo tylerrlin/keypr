@@ -109,6 +109,8 @@ static const uint8_t *cbor_read_text(const uint8_t *buf, size_t *out_len, size_t
 
 // ─── User Presence ────────────────────────────────────────────────────────────
 bool ctap2_wait_for_user_presence(uint32_t timeout_ms) {
+    // TODO CHANGE THIS LINE BACK
+    //return ble_context_is_phone_connected();
     return true;
     pinMode(UP_BUTTON_GPIO, INPUT_PULLUP);
     pinMode(STATUS_LED_GPIO, OUTPUT);
@@ -298,13 +300,14 @@ uint8_t ctap2_make_credential(const uint8_t *cbor, size_t len,
     p += cbor_write_text(p, "fmt");
     p += cbor_write_text(p, "none");
 
-    // "authData": bytes
-    p += cbor_write_text(p, "authData");
-    p += cbor_write_bytes(p, auth_data, auth_data_len);
-
     // "attStmt": {} (empty map for "none" attestation)
     p += cbor_write_text(p, "attStmt");
     *p++ = 0xA0;
+
+
+    // "authData": bytes
+    p += cbor_write_text(p, "authData");
+    p += cbor_write_bytes(p, auth_data, auth_data_len);
 
     *out_len = p - out_buf;
     Serial.printf("[CTAP2] makeCredential success for RP: %.*s\n", (int)rp_id_len, rp_id);
@@ -446,10 +449,11 @@ uint8_t ctap2_get_assertion(const uint8_t *cbor, size_t len,
     // 1: credential { type: "public-key", id: bytes }
     p += cbor_write_uint(p, 1);
     *p++ = 0xA2;
-    p += cbor_write_text(p, "type");
-    p += cbor_write_text(p, "public-key");
+
     p += cbor_write_text(p, "id");
     p += cbor_write_bytes(p, cred.id, CREDENTIAL_ID_LEN);
+    p += cbor_write_text(p, "type");
+    p += cbor_write_text(p, "public-key");
 
     // 2: authData
     p += cbor_write_uint(p, 2);
