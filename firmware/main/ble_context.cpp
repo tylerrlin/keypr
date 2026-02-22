@@ -145,7 +145,7 @@ void ble_context_init(void)
     // Create the service and characteristic
     NimBLEService *pService = pServer->createService(BLE_SERVICE_UUID);
     pCharacteristic =
-        pService->createCharacteristic(BLE_CHAR_UUID, NIMBLE_PROPERTY::READ);
+        pService->createCharacteristic(BLE_CHAR_UUID, NIMBLE_PROPERTY::READ | NIMBLE_PROPERTY::WRITE | NIMBLE_PROPERTY::NOTIFY);
     pCharacteristic->setValue("FIDO2-AuthNode-VDAWG");
     pService->start();
 
