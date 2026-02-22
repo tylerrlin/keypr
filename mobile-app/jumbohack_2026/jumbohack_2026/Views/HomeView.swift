@@ -11,8 +11,51 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @EnvironmentObject var appState: AppState
+    
+    @State private var lastDecision: String = "None"
+    @State private var showApproved: Bool = false
+    @State private var showDeclined: Bool = false
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
+//            have the most recent state on this
+
+            if showApproved {
+                
+                AuthApprovedView(
+                    onDisconnect: {
+                        showApproved = false
+                    }
+                )
+
+            } else if showDeclined {
+
+                AuthDeclinedView(
+                    onDismiss: {
+                        showDeclined = false
+                    }
+                )
+
+            } else {
+
+                AuthNotifView(
+                    appName: "keypr",
+
+                    onAccept: {
+                        lastDecision = "Accepted"
+                        showApproved = true
+                    },
+
+                    onDecline: {
+                        lastDecision = "Declined"
+                        showDeclined = true
+                    },
+                    isPresent: appState.showAuthView
+                    
+                )
+
+            }
             Text("current status")
                 .foregroundColor(AppColors.goldMainText)
                 .font(.custom("KodeMono-Regular", size: 24))

@@ -120,17 +120,21 @@ class SimpleBLEManager: NSObject, ObservableObject, CBCentralManagerDelegate {
             print("Unknown message type: \(data[0])")
             return
         }
-//        triggerNotification()
+
         switch messageType {
         case .empty:
             break
         case .pairingRequest:
-            print("HAVE TO IMPLEMENT APPSTATE! AppState.shared.showPairingView = true ")
+            print("IMPLEMENTed? APPSTATE! AppState.shared.showPairingView = true ")
+            AppState.shared.showPairingView = true
         case .pairingAccept, .pairingReject:
             print("Unexpected message on phone side: \(messageType)")
         case .authRequest:
+            
             print("DEBUG: triggerNotification()")
+            triggerNotification()
         case .authDataChunk:
+            print("DEBUG: chunked website name expected, but this is not implemented yet")
             break // TODO
         case .authGranted, .authDenied:
             print("Unexpected message on phone side: \(messageType)")

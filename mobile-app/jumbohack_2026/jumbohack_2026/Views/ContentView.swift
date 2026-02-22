@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var appState: AppState
+    
+    @State private var isConnected: Bool = false
+    @StateObject private var bleManager = SimpleBLEManager()
+    
     @State private var selectedTab: AppTab = .status
 
     var body: some View {

@@ -12,4 +12,5 @@ import Combine
 class AppState: ObservableObject {
     static let shared = AppState()
     @Published var showAuthView = false
+    @Published var showPairingView = false
 }

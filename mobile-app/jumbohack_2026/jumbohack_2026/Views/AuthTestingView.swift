@@ -51,7 +51,8 @@ struct AuthTestingView: View {
                     onDecline: {
                         lastDecision = "Declined"
                         showDeclined = true
-                    }
+                    },
+                    isPresent: true
                 )
 
             }
