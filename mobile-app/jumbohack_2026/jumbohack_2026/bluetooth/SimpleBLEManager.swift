@@ -34,22 +34,24 @@ class SimpleBLEManager: NSObject, ObservableObject, CBCentralManagerDelegate {
     private let scanCooldown: TimeInterval = 20 // seconds
     
     override init() {
-          super.init()
-          // This enables background restoration
-          centralManager = CBCentralManager(
-              delegate: self,
-              queue: nil,
-              options: [CBCentralManagerOptionRestoreIdentifierKey: "SimpleBLEManagerRestoreKey"]
-          )
-      }
+        super.init()
+        #if !targetEnvironment(simulator)
+        centralManager = CBCentralManager(
+            delegate: self,
+            queue: nil,
+            options: [CBCentralManagerOptionRestoreIdentifierKey: "SimpleBLEManagerRestoreKey"]
+        )
+        #endif
+    }
     
     // targetService UUID is the hardcoded UUID in a git-ignored file
-    private let targetServiceUUID = CBUUID(string: hardcoded_UUID)
-    
+        #if !targetEnvironment(simulator)
+        private let targetServiceUUID = CBUUID(string: hardcoded_UUID)
+        #endif
 
     
     func startScan() {
-        // 2️⃣ Guard to prevent overlapping scans
+        #if !targetEnvironment(simulator)
         guard centralManager.state == .poweredOn, !isScanning else { return }
         print("Starting scan...")
         let serviceUUIDs = [targetServiceUUID]
@@ -58,15 +60,16 @@ class SimpleBLEManager: NSObject, ObservableObject, CBCentralManagerDelegate {
             options: [CBCentralManagerScanOptionAllowDuplicatesKey: true]
         )
         isScanning = true
+        #endif
     }
     
     func stopScan() {
+        #if !targetEnvironment(simulator)
         centralManager.stopScan()
         isScanning = false
         print("Scan stopped for \(scanCooldown) seconds")
+        #endif
     }
-    
-
 
         
         // CBCentralManagerDelegate

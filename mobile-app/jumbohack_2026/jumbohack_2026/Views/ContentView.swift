@@ -14,6 +14,8 @@ struct ContentView: View {
     @StateObject private var bleManager = SimpleBLEManager()
     
     @State private var selectedTab: AppTab = .status
+    @State private var showApproved: Bool = false
+    @State private var showDeclined: Bool = false
 
     var body: some View {
         GeometryReader { geo in
@@ -35,11 +37,11 @@ struct ContentView: View {
                             .frame(height: 2)
                             .padding(.horizontal, 25)
                     }
-                    .frame(height: geo.size.height * 0.10)  // keeps header visible
-//                    .padding(.top, -30)
+                    .frame(height: geo.size.height * 0.10)
 
                     // ===== CONTENT (fills remaining space) =====
                     ZStack {
+                        // Normal tab content underneath
                         switch selectedTab {
                         case .status:
                             HomeView()
@@ -49,6 +51,33 @@ struct ContentView: View {
                             DevicesView(
                                 keyprs: ["keypr"],
                                 computers: ["E's MacBook Pro"]
+                            )
+                        }
+
+                        // Auth overlay on top
+                        if showApproved {
+                            AppColors.blackBackground.ignoresSafeArea()
+                            AuthApprovedView(onDisconnect: {
+                                showApproved = false
+                            })
+                        } else if showDeclined {
+                            AppColors.blackBackground.ignoresSafeArea()
+                            AuthDeclinedView(onDismiss: {
+                                showDeclined = false
+                            })
+                        } else if appState.showAuthView {
+                            AppColors.blackBackground.ignoresSafeArea()
+                            AuthNotifView(
+                                appName: "keypr",
+                                onAccept: {
+                                    appState.showAuthView = false
+                                    showApproved = true
+                                },
+                                onDecline: {
+                                    appState.showAuthView = false
+                                    showDeclined = true
+                                },
+                                isPresent: appState.showAuthView
                             )
                         }
                     }
