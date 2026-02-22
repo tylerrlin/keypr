@@ -8,50 +8,103 @@
 import SwiftUI
 
 struct ContentView: View {
-    // Placeholder boolean for BLE connection
+    // Your existing BLE-related state
     @State private var isConnected: Bool = false
     @StateObject private var bleManager = SimpleBLEManager()
 
-    var body: some View {
-        
-        GeometryReader { geo in
-            AppColors.blackBackground
-                .ignoresSafeArea()
-            VStack(spacing: 0) {
-                // Top 15% gold section
+    // NEW: auth request simulation state
+    @StateObject private var authManager = AuthRequestManager()
+    @State private var lastDecision: String = "None"
 
-                    
-                Text("keypr")
-                    .font(.custom("KyivTypeSans-Heavy3", size: 48))
-                    .fontWeight(.bold)
-                    .foregroundColor(AppColors.goldMainText) // logo/text color in gold rectangle
-                
-                Divider()
-                    .frame(height: 2)
-                    .overlay(AppColors.blueAccent)// Inserts a horizontal line
-                    .padding(.horizontal, 23)
-                    .padding(.top, )
+    var body: some View {
+        GeometryReader { geo in
+            VStack(spacing: 0) {
+
+                // Top 15% gold section
+                ZStack {
+                    AppColors.goldMainText.ignoresSafeArea()
+
+                    VStack(spacing: 10) {
+                        Text("keypr")
+                            .font(.custom("KyivTypeSans-Heavy3", size: 48))
+                            .fontWeight(.bold)
+                            .foregroundColor(.black)
+
+                        Divider()
+                            .frame(height: 2)
+                            .overlay(AppColors.blueAccent)
+                            .padding(.horizontal, 23)
+                    }
+                }
+                .frame(height: geo.size.height * 0.15)
+
+                // Bottom 85% black section
+                ZStack(alignment: .topLeading) {
+                    AppColors.blackBackground.ignoresSafeArea()
+
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text(connectionMessage)
+                            .foregroundStyle(.white.opacity(0.85))
+                            .font(.system(size: 14, design: .monospaced))
+
+                        Button("Simulate Auth Request") {
+                            authManager.showRequest(appName: "keypr")
+                        }
+                        .buttonStyle(.borderedProminent)
+
+                        Text("Last decision: \(lastDecision)")
+                            .foregroundStyle(.white.opacity(0.85))
+                            .font(.system(size: 14, design: .monospaced))
+                    }
+                    .padding(20)
+                }
+                .frame(height: geo.size.height * 0.85)
+            }
+        }
+        .ignoresSafeArea()
+
+        // ✅ Show AuthNotifView “on its own” when request appears
+        .fullScreenCover(item: $authManager.activeRequest) { request in
+            NavigationStack {
+                AuthNotifView(
+                    appName: request.appName,
+                    onAccept: {
+                        lastDecision = "Accepted"
+                        // simulate: dismiss after a beat so you can see the next page if you add it
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            authManager.clearRequest()
+                        }
+                    },
+                    onDecline: {
+                        lastDecision = "Declined"
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            authManager.clearRequest()
+                        }
+                    }
+                )
+            }
+        }
+
+        // ✅ Optional: auto simulation after 2 seconds
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                authManager.showRequest(appName: "keypr")
             }
         }
     }
 
     // Computed property for the descriptive message
     private var connectionMessage: String {
-        if isConnected {
-            return "Your phone is connected to the hardware device via BLE."
-        } else {
-            return "No hardware device detected. Please ensure your device is on and in range."
-        }
+        isConnected
+        ? "Your phone is connected to the hardware device via BLE."
+        : "No hardware device detected. Please ensure your device is on and in range."
     }
-    
-   
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .previewDevice("iPhone 14 Pro") // optional: pick device
-            .preferredColorScheme(.dark)    // optional: dark/light mode
-//        ContentView.printFonts()
+            .previewDevice("iPhone 14 Pro")
+            .preferredColorScheme(.dark)
     }
 }
