@@ -148,9 +148,10 @@ class SimpleBLEManager: NSObject, ObservableObject, CBCentralManagerDelegate {
         print("DEBUG: triggerNotification() called")
         let content = UNMutableNotificationContent()
 
-        content.title = "Are you trying to log in?"
-        content.body = "Tap here to confirm or deny"
+        content.title = "Verification needed for keypr access."
+        content.body = "Open app to approve."
         content.sound = .default
+        content.interruptionLevel = .timeSensitive
 
         let request = UNNotificationRequest(
             identifier: UUID().uuidString,
