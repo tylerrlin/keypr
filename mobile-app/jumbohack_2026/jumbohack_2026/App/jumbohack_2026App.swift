@@ -7,7 +7,10 @@
 
 import SwiftUI
 import UserNotifications
+#if canImport(UIKit)
 import UIKit
+#endif
+
 
 @main
 struct jumnohack_2026App: App {
@@ -18,7 +21,7 @@ struct jumnohack_2026App: App {
         UNUserNotificationCenter.current().delegate = notificationDelegate
         requestNotificationPermission()
         print("FONTSFONTSFONTS")
-        printFonts()
+//        printFonts()
         print("All fonts should have been printed by now")
     }
 
@@ -26,6 +29,18 @@ struct jumnohack_2026App: App {
         WindowGroup {
             ContentView()
         }
+        
+//        WindowGroup {
+//            AuthNotifView(
+//                appName: "keypr",
+//                onAccept: {
+//                    print("Accepted")
+//                },
+//                onDecline: {
+//                    print("Declined")
+//                }
+//            )
+//        }
     }
     
     func requestNotificationPermission() {
@@ -38,13 +53,13 @@ struct jumnohack_2026App: App {
         }
     }
     
-    func printFonts() {
-        for family in UIFont.familyNames.sorted() {
-            let names = UIFont.fontNames(forFamilyName: family)
-            print("Family: \(family) Font names: \(names)")
-        }
-    }
-    
+//    func printFonts() {
+//        for family in UIFont.familyNames.sorted() {
+//            let names = UIFont.fontNames(forFamilyName: family)
+//            print("Family: \(family) Font names: \(names)")
+//        }
+//    }
+//
 }
 
 class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
