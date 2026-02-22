@@ -47,14 +47,22 @@ struct jumnohack_2026App: App {
 
 class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
     
+    // Controls foreground presentation — just show the banner, nothing else
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
-                                withCompletionHandler completionHandler:
-                                @escaping (UNNotificationPresentationOptions) -> Void) {
-        DispatchQueue.main.async {
-                AppState.shared.showAuthView = true
-        }
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.banner, .sound])
-        
     }
+    
+    // Only fires on tap
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        DispatchQueue.main.async {
+            AppState.shared.showAuthView = true
+        }
+        completionHandler()
+    }
+    
+    
 }

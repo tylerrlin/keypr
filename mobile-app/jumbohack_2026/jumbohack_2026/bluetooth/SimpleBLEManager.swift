@@ -19,7 +19,11 @@ import UserNotifications
 
 
 class SimpleBLEManager: NSObject, ObservableObject, CBCentralManagerDelegate {
+    func debug() {
+        print("DEBUG: literally a sanity check")
+    }
     
+        
     @Published var isDeviceFound = false
     @Published var discoveredDeviceNames: [String] = []
     
@@ -59,8 +63,11 @@ class SimpleBLEManager: NSObject, ObservableObject, CBCentralManagerDelegate {
     func stopScan() {
         centralManager.stopScan()
         isScanning = false
-        print("Scan stopped for 10 seconds")
+        print("Scan stopped for \(scanCooldown) seconds")
     }
+    
+
+
         
         // CBCentralManagerDelegate
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -71,23 +78,32 @@ class SimpleBLEManager: NSObject, ObservableObject, CBCentralManagerDelegate {
         
     func centralManager(_ central: CBCentralManager,
                         didDiscover peripheral: CBPeripheral,
-                        advertisementData: [String : Any],
+                        advertisementData: [String: Any],
                         rssi RSSI: NSNumber) {
         guard !isDeviceFound else { return }
+        print("A MESSAGE HAS BEEN FOUND!")
+//        guard let data = advertisementData[CBAdvertisementDataManufacturerDataKey] as? Data,
+//              !data.isEmpty else {
+//            print("RETURNING HERE")
+//            return }
+        
         isDeviceFound = true
         stopScan()
-        // you can trigger app logic here
         
-        //  trigger notification here
-        triggerNotification()
+        if let localName = advertisementData[CBAdvertisementDataLocalNameKey] as? String,
+           let byte = UInt8(localName, radix: 16) {
+            handleMessage(Data([byte]))
+        }
         
-                
-        // 4️⃣ Cool-down: reset isDeviceFound and restart scan after 10s
+//        handleMessage(data)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + scanCooldown) { [weak self] in
             self?.isDeviceFound = false
             self?.startScan()
         }
     }
+    
+    
     
     // Restoration delegate
     func centralManager(_ central: CBCentralManager,
@@ -97,19 +113,68 @@ class SimpleBLEManager: NSObject, ObservableObject, CBCentralManagerDelegate {
     }
     
 //    For when Jack's UUID is found
+
+    
+    func handleMessage(_ data: Data) {
+        guard let messageType = DeviceMessage(rawValue: data[0]) else {
+            print("Unknown message type: \(data[0])")
+            return
+        }
+//        triggerNotification()
+        switch messageType {
+        case .empty:
+            break
+        case .pairingRequest:
+            print("HAVE TO IMPLEMENT APPSTATE! AppState.shared.showPairingView = true ")
+        case .pairingAccept, .pairingReject:
+            print("Unexpected message on phone side: \(messageType)")
+        case .authRequest:
+            print("DEBUG: triggerNotification()")
+        case .authDataChunk:
+            break // TODO
+        case .authGranted, .authDenied:
+            print("Unexpected message on phone side: \(messageType)")
+        }
+    }
+    
     func triggerNotification() {
+        print("DEBUG: triggerNotification() called")
         let content = UNMutableNotificationContent()
+
         content.title = "Are you trying to log in?"
         content.body = "Tap here to confirm or deny"
         content.sound = .default
-        
+
         let request = UNNotificationRequest(
             identifier: UUID().uuidString,
             content: content,
-            trigger: nil // immediate
+            trigger: nil
         )
-        
-        UNUserNotificationCenter.current().add(request)
+
+        DispatchQueue.main.async {
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error = error {
+                    print("Notification error: \(error)")
+                } else {
+                    print("Notification scheduled successfully")
+                }
+            }
+        }
         
     }
+}
+
+enum DeviceMessage: UInt8 {
+    case empty          = 0x00
+    
+    // Pairing
+    case pairingRequest = 0x10  // Device -> Phone
+    case pairingAccept  = 0x20  // Phone -> Device
+    case pairingReject  = 0x21  // Phone -> Device
+    
+    // Authentication
+    case authRequest    = 0x30  // Device -> Phone (next byte = site name length, followed by chunked name)
+    case authDataChunk  = 0x31  // Device -> Phone (delivers x bytes)
+    case authGranted    = 0x40  // Phone -> Device
+    case authDenied     = 0x41  // Phone -> Device
 }

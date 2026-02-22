@@ -26,20 +26,9 @@ struct BTTestView: View {
                     .ignoresSafeArea()
                 
                 VStack(spacing: 0) {
-                    
-                        
-                    Text("TESTING VIEW")
-                        .font(.custom("KodeMono-Regular", size: 36))
-                        .fontWeight(.bold)
-                        .foregroundColor(AppColors.goldMainText)
-                        .padding(.top, 25)
-                    
-                    Rectangle()
-                        .fill(AppColors.blueAccent)
-                        .frame(height: 2)
-                        .padding(.top, 10)
-                        .padding(.horizontal, 25)
-                    
+                    Button("Hello World") {
+                        print("Fuck you stupid hoero")
+                    }
                     
                     Button("Test Notification") {
                         bleManager.triggerNotification()
@@ -47,11 +36,10 @@ struct BTTestView: View {
                     
                     
                 }
-                .sheet(isPresented: $appState.showAuthView) {
-                    Text("This **should** be working??")
+                .sheet(isPresented: $appState.showAuthView){ Text("NOTIFICATION CLICKED!!")
                 }
             }
-            .frame(height: .infinity)
+            .frame(height: 800)
         }
     }
 }
