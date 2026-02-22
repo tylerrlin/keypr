@@ -21,6 +21,7 @@ import UserNotifications
 class SimpleBLEManager: NSObject, ObservableObject, CBCentralManagerDelegate {
     
     @Published var isDeviceFound = false
+    @Published var discoveredDeviceNames: [String] = []
     
     private var centralManager: CBCentralManager!
     private var isScanning = false

@@ -20,6 +20,7 @@
 		7CA24D462F4A8E2500C1F4AB /* SimpleBLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D352F4A8E2500C1F4AB /* SimpleBLEManager.swift */; };
 		7CA24D472F4A8E2500C1F4AB /* AuthNotifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D3B2F4A8E2500C1F4AB /* AuthNotifView.swift */; };
 		7CA24D482F4A8E2500C1F4AB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D3C2F4A8E2500C1F4AB /* ContentView.swift */; };
+		7CA24D4A2F4A999000C1F4AB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24D492F4A998E00C1F4AB /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		7CA24D3B2F4A8E2500C1F4AB /* AuthNotifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNotifView.swift; sourceTree = "<group>"; };
 		7CA24D3C2F4A8E2500C1F4AB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7CA24D3E2F4A8E2500C1F4AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7CA24D492F4A998E00C1F4AB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		7CA24D3D2F4A8E2500C1F4AB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7CA24D492F4A998E00C1F4AB /* HomeView.swift */,
 				7CA24D3B2F4A8E2500C1F4AB /* AuthNotifView.swift */,
 				7CA24D3C2F4A8E2500C1F4AB /* ContentView.swift */,
 				6C5FC0F92F4A946B004D80A6 /* AppTab.swift */,
@@ -195,6 +198,7 @@
 				7CA24D442F4A8E2500C1F4AB /* AppColors.swift in Sources */,
 				6C5FC0FE2F4A94AA004D80A6 /* HistoryView.swift in Sources */,
 				7CA24D452F4A8E2500C1F4AB /* jumbohack_2026App.swift in Sources */,
+				7CA24D4A2F4A999000C1F4AB /* HomeView.swift in Sources */,
 				6C5FC0FC2F4A948D004D80A6 /* CustomTabBar.swift in Sources */,
 				7CA24D462F4A8E2500C1F4AB /* SimpleBLEManager.swift in Sources */,
 				7CA24D472F4A8E2500C1F4AB /* AuthNotifView.swift in Sources */,
