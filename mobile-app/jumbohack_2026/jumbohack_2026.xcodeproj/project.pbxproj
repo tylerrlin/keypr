@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C5FC0FA2F4A946B004D80A6 /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5FC0F92F4A946B004D80A6 /* AppTab.swift */; };
+		6C5FC0FC2F4A948D004D80A6 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5FC0FB2F4A948D004D80A6 /* CustomTabBar.swift */; };
+		6C5FC0FE2F4A94AA004D80A6 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5FC0FD2F4A94AA004D80A6 /* HistoryView.swift */; };
+		6C5FC1002F4A94B9004D80A6 /* DevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5FC0FF2F4A94B9004D80A6 /* DevicesView.swift */; };
 		7CA24D122F4A8D6B00C1F4AB /* KodeMono-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24D092F4A8D6B00C1F4AB /* KodeMono-VariableFont_wght.ttf */; };
 		7CA24D132F4A8D6B00C1F4AB /* KyivType_Sans_Heavy3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24D0A2F4A8D6B00C1F4AB /* KyivType_Sans_Heavy3.otf */; };
 		7CA24D142F4A8D6B00C1F4AB /* KyivType_Sans_Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24D0B2F4A8D6B00C1F4AB /* KyivType_Sans_Medium.otf */; };
@@ -19,6 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C5FC0F92F4A946B004D80A6 /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
+		6C5FC0FB2F4A948D004D80A6 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		6C5FC0FD2F4A94AA004D80A6 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		6C5FC0FF2F4A94B9004D80A6 /* DevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesView.swift; sourceTree = "<group>"; };
 		7CA24C8D2F4A2E0400C1F4AB /* jumbohack_2026.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jumbohack_2026.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA24D042F4A8D6B00C1F4AB /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		7CA24D052F4A8D6B00C1F4AB /* jumbohack_2026App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jumbohack_2026App.swift; sourceTree = "<group>"; };
@@ -90,6 +98,10 @@
 			children = (
 				7CA24D0D2F4A8D6B00C1F4AB /* AuthNotifView.swift */,
 				7CA24D0E2F4A8D6B00C1F4AB /* ContentView.swift */,
+				6C5FC0F92F4A946B004D80A6 /* AppTab.swift */,
+				6C5FC0FB2F4A948D004D80A6 /* CustomTabBar.swift */,
+				6C5FC0FD2F4A94AA004D80A6 /* HistoryView.swift */,
+				6C5FC0FF2F4A94B9004D80A6 /* DevicesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -152,7 +164,6 @@
 				Base,
 			);
 			mainGroup = 7CA24C842F4A2E0400C1F4AB;
-			minimizedProjectReferenceProxies = 1;
 			productRefGroup = 7CA24C8E2F4A2E0400C1F4AB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -182,10 +193,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CA24D162F4A8D6B00C1F4AB /* AppColors.swift in Sources */,
+				6C5FC0FE2F4A94AA004D80A6 /* HistoryView.swift in Sources */,
 				7CA24D172F4A8D6B00C1F4AB /* jumbohack_2026App.swift in Sources */,
+				6C5FC0FC2F4A948D004D80A6 /* CustomTabBar.swift in Sources */,
 				7CA24D182F4A8D6B00C1F4AB /* SimpleBLEManager.swift in Sources */,
 				7CA24D192F4A8D6B00C1F4AB /* AuthNotifView.swift in Sources */,
+				6C5FC1002F4A94B9004D80A6 /* DevicesView.swift in Sources */,
 				7CA24D1A2F4A8D6B00C1F4AB /* ContentView.swift in Sources */,
+				6C5FC0FA2F4A946B004D80A6 /* AppTab.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
