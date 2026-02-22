@@ -6,7 +6,7 @@ import {
     KeySquareIcon,
     Zap,
     Github,
-    Cpu,
+    Feather,
     Fingerprint,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -102,9 +102,10 @@ const SECURITY_FEATURES = [
 const HARDWARE_SPECS = [
     { label: "Microcontroller", value: "ESP32-S3" },
     { label: "Connectivity", value: "Bluetooth Low Energy (BLE)" },
-    { label: "Firmware", value: "Arduino (C/C++)" },
-    { label: "Auth Standard", value: "FIDO / CTAP2" },
-    { label: "More", value: "add later..." },
+    { label: "Firmware", value: "ESP-IDF (C/C++)" },
+    { label: "Interface", value: "USB (FIDO HID / CCID)" },
+    { label: "Auth Standard", value: "FIDO 2.1 / CTAP 2" },
+    { label: "Form Factor", value: "USB Dongle" },
 ];
 
 const APP_FEATURES = [
@@ -316,23 +317,25 @@ const App = () => {
                             Built on the ESP32-S3
                         </h2>
                         <p className="mt-4 text-k-silver/70 leading-relaxed">
-                            The ESP32-S3 gives{" "}
+                            All that's needed is an ESP32-S3, which provides{" "}
                             <span className="font-kyiv-medium text-k-gold">
                                 keypr
                             </span>{" "}
-                            native Bluetooth Low Energy support and physical
-                            passkey capabilities.
+                            with native USB and Bluetooth Low Energy Support
+                            without any additional chips. The device runs custom
+                            firmware built on top of the ESP-IDF, and all
+                            schematics and code are open source.
                         </p>
                         <div className="mt-8 flex items-center gap-3">
                             <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-k-blue/20 bg-k-blue/10">
-                                <Cpu className="h-6 w-6 text-k-blue" />
+                                <Feather className="h-6 w-6 text-k-blue" />
                             </div>
                             <div>
                                 <p className="text-sm font-medium text-k-silver">
-                                    Open-source hardware spec
+                                    Lightweight and low-cost
                                 </p>
                                 <p className="text-xs text-k-silver/50">
-                                    Schematics published on GitHub
+                                    Easily accessible and affordable
                                 </p>
                             </div>
                         </div>
