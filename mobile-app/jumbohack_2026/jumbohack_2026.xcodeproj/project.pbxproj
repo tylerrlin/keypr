@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXFileReference section */
@@ -11,11 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		7CA24C8F2F4A2E0400C1F4AB /* jumbohack_2026 */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = jumbohack_2026;
-			sourceTree = "<group>";
-		};
+		7CA24C8F2F4A2E0400C1F4AB /* jumbohack_2026 */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = jumbohack_2026; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +82,7 @@
 				};
 			};
 			buildConfigurationList = 7CA24C882F4A2E0400C1F4AB /* Build configuration list for PBXProject "jumbohack_2026" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -94,7 +91,6 @@
 			);
 			mainGroup = 7CA24C842F4A2E0400C1F4AB;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			productRefGroup = 7CA24C8E2F4A2E0400C1F4AB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

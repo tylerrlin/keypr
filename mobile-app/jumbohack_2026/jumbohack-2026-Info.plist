@@ -6,6 +6,12 @@
 	<array>
 		<string>This app uses Bluetooth to detect your hardware passkey device.</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Dmitry Rastvortsev - KyivType Sans Medium-.ttf</string>
+		<string>Dmitry Rastvortsev - KyivType Sans Heavy3.ttf</string>
+		<string>KodeMono-VariableFont_wght.ttf</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>

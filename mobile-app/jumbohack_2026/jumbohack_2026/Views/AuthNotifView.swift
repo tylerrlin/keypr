@@ -8,7 +8,9 @@
 
 //This is the view for when a notification is hit
 
+import SwiftUI
 
-struct AuthNotifView: View {
-    
-}
+
+//struct AuthNotifView: View {
+//    
+//}

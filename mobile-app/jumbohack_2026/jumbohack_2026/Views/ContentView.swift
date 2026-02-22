@@ -13,6 +13,7 @@ struct ContentView: View {
     @StateObject private var bleManager = SimpleBLEManager()
 
     var body: some View {
+        
         GeometryReader { geo in
             AppColors.blackBackground
                 .ignoresSafeArea()
@@ -21,6 +22,7 @@ struct ContentView: View {
                 ZStack{
                     AppColors.goldMainText
                         .ignoresSafeArea()
+                    
                     Text("keypr")
                         .font(.largeTitle)
                         .fontWeight(.bold)
@@ -47,6 +49,13 @@ struct ContentView: View {
             return "No hardware device detected. Please ensure your device is on and in range."
         }
     }
+    
+    func printFonts() {
+        for family in UIFont.familyNames.sorted() {
+            let names = UIFont.fontNames(forFamilyName: family)
+            print("Family: \(family) Font names: \(names)")
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -54,5 +63,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
             .previewDevice("iPhone 14 Pro") // optional: pick device
             .preferredColorScheme(.dark)    // optional: dark/light mode
+//        ContentView.printFonts()
     }
 }
